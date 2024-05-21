@@ -1,0 +1,62 @@
+#Exercicio 11
+
+PREFIX : <http://www.example.org/disease-ontology#>
+select (count(?d) as ?doencas) where { 
+	?d a :Disease
+}
+
+PREFIX : <http://www.example.org/disease-ontology#>
+select ?d where { 
+	?d a :Disease .
+    ?d :hasSymptom :yellowish_skin
+}
+
+PREFIX : <http://www.example.org/disease-ontology#>
+select ?d where { 
+	?d a :Disease .
+    ?d :hasTreatment :exercise
+}
+
+PREFIX : <http://www.example.org/disease-ontology#>
+select ?nome where { 
+	?p a :Patient .
+    ?p :hasName ?nome
+} order by (?nome)
+
+
+
+#Exercicio 12
+
+PREFIX : <http://www.example.org/disease-ontology#>
+construct { ?p :hasDisease ?d } where { 
+	?p a :Patient .
+    ?d a :Disease .
+    ?p (:exhibitsSymptom/^:hasSymptom) ?d
+}
+
+
+
+#Exercicio 13
+
+PREFIX : <http://www.example.org/disease-ontology#>
+select ?d (count (?p) as ?patients) where { 
+	?p :hasDisease ?d
+} group by (?d)
+
+
+
+#Exercicio 14
+
+PREFIX : <http://www.example.org/disease-ontology#>
+select ?s (count (?d) as ?diseases) where { 
+	?d :hasSymptom ?s
+} group by (?s)
+
+
+
+#Exercicio 15
+
+PREFIX : <http://www.example.org/disease-ontology#>
+select ?t (count (?d) as ?diseases) where { 
+	?d :hasTreatment ?t
+} group by (?t)

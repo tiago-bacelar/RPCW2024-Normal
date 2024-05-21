@@ -1,0 +1,43 @@
+#Query 1
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select (count(?c) as ?classes) where { 
+	?c a owl:Class .
+}
+
+
+
+#Query2
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select (count(?p) as ?objectProperties) where { 
+	?p a owl:ObjectProperty
+}
+
+
+
+#Query 3
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select (count(?s) as ?individuals) where { 
+	?s a owl:NamedIndividual
+}
+
+
+
+#Query 4
+
+PREFIX : <http://rpcw.di.uminho.pt/2024/historia/>
+select ?s where { 
+	?s :trabalhaProducao :tomate
+}
+
+
+
+#Query 5
+
+PREFIX : <http://rpcw.di.uminho.pt/2024/historia/>
+select distinct ?s where { 
+	?t a :Trabalhador .
+    ?s :contrata ?t
+}
